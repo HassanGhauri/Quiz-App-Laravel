@@ -8,45 +8,45 @@ use App\Http\Controllers\Api\UserResultController;
 
 Route::prefix('cqs')->group(function () {
 
-    Route::get('/users', [UserController::class, 'index']);
+  Route::get('/users', [UserController::class, 'index']);
 
-    Route::get('/users/{id}', [UserController::class, 'show']);
+  Route::get('/users/{id}', [UserController::class, 'show']);
 
-    Route::post('/users', [UserController::class, 'store']);
+  Route::post('/users', [UserController::class, 'store']);
 
-    Route::put('/users/{id}', [UserController::class, 'update']);
+  Route::put('/users/{id}', [UserController::class, 'update']);
 
-    Route::delete('/users/{id}', [UserController::class, 'delete']);
+  Route::delete('/users/{id}', [UserController::class, 'delete']);
+  
+  Route::post('/login', [UserController::class, 'login']);
 
-     Route::get('/quizzes', [QuizController::class, 'index']);
+  Route::get('/quizzes', [QuizController::class, 'index']);
 
-    Route::get('/quizzes/{id}', [QuizController::class, 'show']);
+  Route::get('/quizzes/{id}', [QuizController::class, 'show']);
 
-    Route::post('/quizzes', [QuizController::class, 'store']);
+  Route::post('/quizzes', [QuizController::class, 'store']);
 
-    Route::put('/quizzes/{id}', [QuizController::class, 'update']);
+  Route::put('/quizzes/{id}', [QuizController::class, 'update']);
 
-    Route::delete('/quizzes/{id}', [QuizController::class, 'delete']);
+  Route::delete('/quizzes/{id}', [QuizController::class, 'delete']);
 
-    Route::get('/mcqs', [McqsController::class, 'index']);
+  Route::get('/mcqs', [McqsController::class, 'index']);
 
-    Route::get('/mcqs/{id}', [McqsController::class, 'show']);
+  Route::get('/mcqs/{id}', [McqsController::class, 'show']);
 
-    Route::post('/mcqs', [McqsController::class, 'store']);
+  Route::post('/mcqs', [McqsController::class, 'store']);
 
-    Route::put('/mcqs/{id}', [McqsController::class, 'update']);
+  Route::put('/mcqs/{id}', [McqsController::class, 'update']);
 
-    Route::delete('/mcqs/{id}', [McqsController::class, 'delete']);
+  Route::delete('/mcqs/{id}', [McqsController::class, 'delete']);
 
-      Route::get('/results', [UserResultController::class, 'index']);
+  Route::get('/results', [UserResultController::class, 'index']);
 
-    Route::get('/results/{id}', [UserResultController::class, 'show']);
+  Route::get('/results/{id}', [UserResultController::class, 'show']);
 
-    Route::post('/results', [UserResultController::class, 'store']);
+  Route::post('/results', [UserResultController::class, 'store']);
 
-    Route::put('/results/{id}', [UserResultController::class, 'update']);
+  Route::put('/results/{id}', [UserResultController::class, 'update']);
 
-    Route::delete('/results/{id}', [UserResultController::class, 'delete']);
-
-
+  Route::delete('/results/{id}', [UserResultController::class, 'delete']);
 });

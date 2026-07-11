@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -97,6 +98,43 @@ class UserController extends Controller
 
         return response()->json([
             'message' => "User with ID $id deleted successfully"
+        ]);
+    }
+
+    // USER LOGIN
+    public function login(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        // Find user by email
+        $user = User::where('email', $validated['email'])->first();
+
+        // Check if user exists
+        if (!$user) {
+            return response()->json([
+                'message' => 'Invalid email or password'
+            ], 401);
+        }
+
+        // Verify password
+        if (!Hash::check($validated['password'], $user->password)) {
+            return response()->json([
+                'message' => 'Invalid email or password'
+            ], 401);
+        }
+
+        return response()->json([
+            'message' => 'Login successful',
+            'data' => [
+                'id' => $user->id,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                'email' => $user->email,
+                'role' => $user->role
+            ]
         ]);
     }
 }
