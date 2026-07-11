@@ -20,6 +20,27 @@ class McqsController extends Controller
         ]);
     }
 
+    public function getQuizMcqs($id)
+{
+    $quiz = Quiz::find($id);
+
+    if (!$quiz) {
+        return response()->json([
+            'message' => 'Quiz not found'
+        ], 404);
+    }
+
+    $mcqs = Mcq::where('quiz_id', $id)
+        ->where('enable', true)
+        ->get();
+
+    return response()->json([
+        'message' => 'Quiz MCQs fetched successfully',
+        'quiz' => $quiz,
+        'data' => $mcqs
+    ]);
+}
+
     // GET SINGLE MCQ
     public function show($id)
     {

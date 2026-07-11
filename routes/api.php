@@ -29,6 +29,7 @@ Route::prefix('cqs')->group(function () {
   Route::put('/quizzes/{id}', [QuizController::class, 'update']);
 
   Route::delete('/quizzes/{id}', [QuizController::class, 'delete']);
+  Route::get('/quizzes/{id}/mcqs', [McqsController::class, 'getQuizMcqs']);
 
   Route::get('/mcqs', [McqsController::class, 'index']);
 
